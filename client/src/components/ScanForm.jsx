@@ -8,7 +8,8 @@ import {
   FiZap,
   FiAlertTriangle,
   FiCheckCircle,
-  FiRefreshCw
+  FiRefreshCw,
+  FiGlobe
 } from 'react-icons/fi'
 import { validateUrl } from '../utils/validateUrl.js'
 
@@ -75,12 +76,7 @@ export default function ScanForm({ onScan, loading, serverError, onClearError })
       <form onSubmit={handleSubmit} noValidate>
         <div className={`scan-console-box ${activeError ? 'has-error' : ''}`}>
           <div className="scan-input-row">
-            <span className="protocol-badge" title="Target Protocol Scheme">
-              <FiLock aria-hidden="true" />
-              <span>HTTPS://</span>
-            </span>
-
-            <FiSearch className="scan-input-icon" aria-hidden="true" />
+            <FiGlobe className="scan-input-icon" aria-hidden="true" style={{ color: '#0284c7', fontSize: '1.25rem', marginLeft: '4px' }} />
 
             <input
               id="url"
@@ -88,11 +84,11 @@ export default function ScanForm({ onScan, loading, serverError, onClearError })
               inputMode="url"
               autoComplete="url"
               spellCheck="false"
-              placeholder="Enter target domain or URL (e.g., example.com)"
+              placeholder="Enter website URL or domain (e.g. http://site.com, https://site.com, or domain)"
               value={url}
               onChange={handleChange}
               disabled={loading}
-              aria-label="Target website domain"
+              aria-label="Target website URL or domain"
               aria-invalid={!!activeError}
               aria-describedby={activeError ? 'scan-error-details' : undefined}
             />
